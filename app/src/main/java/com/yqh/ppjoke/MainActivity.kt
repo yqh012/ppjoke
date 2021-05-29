@@ -9,8 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.yqh.libannotation.ActivityDestination
 
-//@ActivityDestination(pageUrl = "main/tabs/mainActivity")
-@ActivityDestination(pageUrl = "main/tabs/dash")
+@ActivityDestination(pageUrl = "main/tabs/mainActivity")
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
