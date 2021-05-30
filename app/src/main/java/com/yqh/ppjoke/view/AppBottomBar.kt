@@ -69,9 +69,6 @@ class AppBottomBar(context: Context, attrs: AttributeSet) : BottomNavigationView
              */
             labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
 
-            //给AppBottomBar设置默认选中的按钮
-            selectedItemId = bottomBar.selectTab
-
             for (bottomInfo in it) {
                 if (!bottomInfo.enable) continue
                 //获取注册的 Fragment 或者 Activity 创建时的 id (由ClassName 的 hashCode 生成的唯一标识)
@@ -84,7 +81,9 @@ class AppBottomBar(context: Context, attrs: AttributeSet) : BottomNavigationView
                 menuItem.setIcon(icons.get(bottomInfo.index))
             }
 
-            it.forEach { bottom ->
+//            it.forEach { bottom ->
+            for (bottom in it) {
+                if (!bottom.enable) continue
                 val iconSized = dp2px(bottom.size.toFloat())
                 ((getChildAt(0) as? BottomNavigationMenuView)?.getChildAt(bottom.index) as? BottomNavigationItemView)?.apply {
                     setIconSize(iconSized)
@@ -100,6 +99,18 @@ class AppBottomBar(context: Context, attrs: AttributeSet) : BottomNavigationView
                 }
             }
 
+            /**
+             * 设置底部导航栏默认选中项
+             */
+            if (bottomBar.selectTab != 0) {
+                it[bottomBar.selectTab].apply {
+                    if (enable) {
+                        val selectedId = getItemId(pageUrl)
+                        //等待 AppBottomBar 控件加载完成后在设置
+                        post { selectedItemId = selectedId }
+                    }
+                }
+            }
         }
     }
 
