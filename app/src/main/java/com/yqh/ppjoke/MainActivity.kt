@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.yqh.libannotation.ActivityDestination
+import com.yqh.ppjoke.util.build
 
 @ActivityDestination(pageUrl = "main/tabs/mainActivity")
 class MainActivity : AppCompatActivity() {
@@ -27,5 +28,8 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navController.build()
+
     }
 }

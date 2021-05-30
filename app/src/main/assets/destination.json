@@ -1,1 +1,34 @@
-{"main/tabs/dash":{"isFragment":true,"asStart":false,"needLogin":false,"pageUrl":"main/tabs/dash","className":"com.yqh.ppjoke.ui.dashboard.DashboardFragment","id":212919508},"main/tabs/home":{"isFragment":true,"asStart":true,"needLogin":false,"pageUrl":"main/tabs/home","className":"com.yqh.ppjoke.ui.home.HomeFragment","id":20899432},"main/tabs/notification":{"isFragment":true,"asStart":false,"needLogin":false,"pageUrl":"main/tabs/notification","className":"com.yqh.ppjoke.ui.notifications.NotificationsFragment","id":366612860}}
+{
+  "main/tabs/dash": {
+    "isFragment": true,
+    "asStart": false,
+    "needLogin": false,
+    "pageUrl": "main/tabs/dash",
+    "className": "com.yqh.ppjoke.ui.dashboard.DashboardFragment",
+    "id": 212919508
+  },
+  "main/tabs/home": {
+    "isFragment": true,
+    "asStart": true,
+    "needLogin": false,
+    "pageUrl": "main/tabs/home",
+    "className": "com.yqh.ppjoke.ui.home.HomeFragment",
+    "id": 20899432
+  },
+  "main/tabs/mainActivity": {
+    "isFragment": false,
+    "asStart": false,
+    "needLogin": false,
+    "pageUrl": "main/tabs/mainActivity",
+    "className": "com.yqh.ppjoke.MainActivity",
+    "id": 1315576276
+  },
+  "main/tabs/notification": {
+    "isFragment": true,
+    "asStart": false,
+    "needLogin": false,
+    "pageUrl": "main/tabs/notification",
+    "className": "com.yqh.ppjoke.ui.notifications.NotificationsFragment",
+    "id": 366612860
+  }
+}
