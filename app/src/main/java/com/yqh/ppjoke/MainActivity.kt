@@ -19,17 +19,21 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
         navController.build()
+
+        //把 BottomNavigation 和 我们的 navController 点击跳转事件关联起来
+        navView.setOnNavigationItemSelectedListener {
+            navController.navigate(it.itemId)
+            /**
+             * 最后的返回值 Boolean
+             * 如果返回 false ，代表这个按钮不会被选中，也就不会被设置选中的着色效果
+             * 如果返回 true ， 代表这个按钮会被选中，也就是会有点击的着色效果
+             * 此处我们通过判断 menu 的 Title 是否为空来判断它是否可以被选中
+             */
+            !it.title.isNullOrBlank()
+        }
 
     }
 }

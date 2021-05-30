@@ -1,11 +1,13 @@
 package com.yqh.ppjoke.util
 
+import android.annotation.SuppressLint
 import android.app.Application
 
+@SuppressLint("PrivateApi", "DiscouragedPrivateApi")
 object ApplicationUtil {
     val application: Application by lazy {
-        Class.forName("android.app.RemoteServiceException")
+        Class.forName("android.app.ActivityThread")
             .getDeclaredMethod("currentApplication")
-            .invoke(null, null) as Application
+            .invoke(null) as Application
     }
 }

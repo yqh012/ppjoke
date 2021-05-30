@@ -1,4 +1,4 @@
-package com.yqh.ppjoke.ui.dashboard
+package com.yqh.ppjoke.ui.find
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.yqh.libannotation.FragmentDestination
 import com.yqh.ppjoke.R
 
-@FragmentDestination(pageUrl = "main/tabs/dash")
-class DashboardFragment : Fragment() {
+@FragmentDestination(pageUrl = "main/tabs/find")
+class FindFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var dashboardViewModel: FindViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -22,7 +22,7 @@ class DashboardFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         dashboardViewModel =
-                ViewModelProvider(this).get(DashboardViewModel::class.java)
+                ViewModelProvider(this).get(FindViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {

@@ -1,4 +1,4 @@
-package com.yqh.ppjoke.ui.notifications
+package com.yqh.ppjoke.ui.my
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.yqh.libannotation.FragmentDestination
 import com.yqh.ppjoke.R
 
-@FragmentDestination(pageUrl = "main/tabs/notification")
-class NotificationsFragment : Fragment() {
+@FragmentDestination(pageUrl = "main/tabs/my")
+class MyFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private lateinit var notificationsViewModel: MyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +22,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(MyViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_notifications, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
         notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
