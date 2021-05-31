@@ -3,25 +3,32 @@ package com.yqh.ppjoke
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.yqh.libannotation.ActivityDestination
 import com.yqh.ppjoke.util.build
+import com.yqh.ppjoke.util.getDestConfig
 
 @ActivityDestination(pageUrl = "main/tabs/mainActivity")
 class MainActivity : AppCompatActivity() {
-
+    private val navController: NavController by lazy {
+        findNavController(R.id.nav_host_fragment)
+    }
+    private val navView: BottomNavigationView by lazy {
+        findViewById(R.id.nav_view)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-
-        val navController = findNavController(R.id.nav_host_fragment)
+//        navView = findViewById(R.id.nav_view)
+//        navController = findNavController(R.id.nav_host_fragment)
         navView.setupWithNavController(navController)
 
-        navController.build()
+        val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment);
+        navController.build(this, fragment!!.childFragmentManager, fragment.id)
 
         //把 BottomNavigation 和 我们的 navController 点击跳转事件关联起来
         navView.setOnNavigationItemSelectedListener {
@@ -35,5 +42,20 @@ class MainActivity : AppCompatActivity() {
             !it.title.isNullOrBlank()
         }
 
+    }
+
+    override fun onBackPressed() {
+        //获取当前正在显示页面的 destinationId
+        val id = navController.currentDestination!!.id
+        //获取 app 页面路由导航结构图，首页的 destinationId
+        val homeDestId = navController.graph.startDestination
+        //如果当前页面不是首页，并且点击了返回键，则拦截，并跳转到首页tab
+        if (id != homeDestId) {
+            navView.selectedItemId = homeDestId
+//            finish()
+            return
+        }
+        //否则则直接finish，此处不可以调用 onBackPressed，因为 navigation 会操作回退栈，切换到之前显示的页面
+        finish()
     }
 }

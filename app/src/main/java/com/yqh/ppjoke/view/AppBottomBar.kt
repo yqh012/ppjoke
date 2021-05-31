@@ -14,20 +14,6 @@ import com.yqh.ppjoke.util.dp2px
 import com.yqh.ppjoke.util.getBottomBarConfig
 import com.yqh.ppjoke.util.getDestConfig
 
-//fun main() {
-//    val status = Array(2) { IntArray(1) }
-//    status[0] = IntArray(1) { 1 }
-//
-//    status.forEach {
-//
-//        it.forEach { aaa ->
-//            println(aaa)
-//        }
-//
-//    }
-//}
-
-
 @SuppressLint("RestrictedApi")
 class AppBottomBar(context: Context, attrs: AttributeSet) : BottomNavigationView(context, attrs) {
 

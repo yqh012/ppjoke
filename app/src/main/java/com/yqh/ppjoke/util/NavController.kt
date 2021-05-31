@@ -1,15 +1,24 @@
 package com.yqh.ppjoke.util
 
 import android.content.ComponentName
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphNavigator
 import androidx.navigation.fragment.FragmentNavigator
+import com.yqh.ppjoke.navigator.FixFragmentNavigator
 
-fun NavController.build() {
+fun NavController.build(
+    activity: FragmentActivity,
+    childFragmentManager: FragmentManager,
+    containerId: Int
+) {
     //通过 NavController 中的 navigatorProvider 对象获取到 FragmentNavigator 对象和 ActivityNavigator 对象
-    val fragmentNavigator = navigatorProvider.getNavigator(FragmentNavigator::class.java)
+//    val fragmentNavigator = navigatorProvider.getNavigator(FragmentNavigator::class.java)
+    val fragmentNavigator = FixFragmentNavigator(activity, childFragmentManager, containerId)
+    navigatorProvider.addNavigator(fragmentNavigator)
     val activityNavigator = navigatorProvider.getNavigator(ActivityNavigator::class.java)
 
     val navGraph = NavGraph(NavGraphNavigator(navigatorProvider))

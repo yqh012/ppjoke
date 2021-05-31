@@ -1,6 +1,7 @@
 package com.yqh.ppjoke.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.yqh.ppjoke.R
 
 @FragmentDestination(pageUrl = "main/tabs/home", asStart = true)
 class HomeFragment : Fragment() {
-
+    private val TAG = HomeFragment::class.simpleName
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
@@ -28,6 +29,9 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        Log.e(TAG, "HomeFragment onCreateView.")
+
         return root
     }
 }

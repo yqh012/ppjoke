@@ -1,6 +1,7 @@
 package com.yqh.ppjoke.ui.my
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.yqh.libannotation.FragmentDestination
 import com.yqh.ppjoke.R
+import com.yqh.ppjoke.ui.find.FindFragment
 
 @FragmentDestination(pageUrl = "main/tabs/my")
 class MyFragment : Fragment() {
-
+    private val TAG = MyFragment::class.simpleName
     private lateinit var notificationsViewModel: MyViewModel
 
     override fun onCreateView(
@@ -28,6 +30,8 @@ class MyFragment : Fragment() {
         notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+
+        Log.e(TAG, "MyFragment onCreateView.")
         return root
     }
 }
