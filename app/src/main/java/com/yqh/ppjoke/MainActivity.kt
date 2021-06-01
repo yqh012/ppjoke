@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        navView = findViewById(R.id.nav_view)
 //        navController = findNavController(R.id.nav_host_fragment)
-        navView.setupWithNavController(navController)
+//        navView.setupWithNavController(navController)
 
         val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment);
         navController.build(this, fragment!!.childFragmentManager, fragment.id)

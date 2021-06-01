@@ -67,7 +67,6 @@ class AppBottomBar(context: Context, attrs: AttributeSet) : BottomNavigationView
                 menuItem.setIcon(icons.get(bottomInfo.index))
             }
 
-//            it.forEach { bottom ->
             for (bottom in it) {
                 if (!bottom.enable) continue
                 val iconSized = dp2px(bottom.size.toFloat())
