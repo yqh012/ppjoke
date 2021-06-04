@@ -9,8 +9,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.yqh.common.utils.AppUtil
 import com.yqh.ppjoke.R
-import com.yqh.ppjoke.util.dp2px
 import com.yqh.ppjoke.util.getBottomBarConfig
 import com.yqh.ppjoke.util.getDestConfig
 
@@ -64,12 +64,12 @@ class AppBottomBar(context: Context, attrs: AttributeSet) : BottomNavigationView
                 //创建底部导航栏 button 按钮(tab 按钮)
                 val menuItem = menu.add(0, itemId, bottomInfo.index, bottomInfo.title)
                 //设置图标
-                menuItem.setIcon(icons.get(bottomInfo.index))
+                menuItem.setIcon(icons[bottomInfo.index])
             }
 
             for (bottom in it) {
                 if (!bottom.enable) continue
-                val iconSized = dp2px(bottom.size.toFloat())
+                val iconSized = AppUtil.dp2px(bottom.size.toFloat())
                 ((getChildAt(0) as? BottomNavigationMenuView)?.getChildAt(bottom.index) as? BottomNavigationItemView)?.apply {
                     setIconSize(iconSized)
                     if (bottom.title.isNullOrBlank()) {

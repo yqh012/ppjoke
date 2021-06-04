@@ -9,18 +9,18 @@ java {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
 }
 
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8
 }
 
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "com.squareup:kotlinpoet:1.4.3"
-    implementation "com.bennyhuo.aptutils:aptutils:1.7.1"
-    implementation 'com.alibaba:fastjson:1.2.59'
+    implementation(Kotlin.kotlinStdlib)
+    implementation(ThirdParty.kotlinpoet.kotlin_poet)
+    implementation(ThirdParty.kotlinpoet.apt_utils)
+    implementation(ThirdParty.fastjson.fast_json)
     implementation project(path: ':libannotation')
 }

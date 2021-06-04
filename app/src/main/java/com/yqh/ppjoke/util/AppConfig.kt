@@ -1,6 +1,7 @@
 package com.yqh.ppjoke.util
 
-import android.util.TypedValue
+import com.yqh.common.utils.AppUtil
+import com.yqh.common.utils.MoshiUtils
 import com.yqh.ppjoke.model.BottomBar
 import com.yqh.ppjoke.model.Destination
 
@@ -17,18 +18,7 @@ fun getBottomBarConfig(): BottomBar? =
     MoshiUtils.fromJson(parseFile("main_tabs_config.json"))
 
 fun parseFile(fileName: String): String {
-    return ApplicationUtil.application.resources.assets.open(fileName).use {
+    return AppUtil.application.resources.assets.open(fileName).use {
         it.bufferedReader().readText()
     }
-}
-
-/**
- * dp 转 px 转换方法
- */
-fun dp2px(dp: Float): Int {
-    return TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP,
-        dp,
-        ApplicationUtil.application.resources.displayMetrics
-    ).toInt()
 }

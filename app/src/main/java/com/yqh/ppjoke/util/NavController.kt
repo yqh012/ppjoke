@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphNavigator
 import androidx.navigation.fragment.FragmentNavigator
+import com.yqh.common.utils.AppUtil
 import com.yqh.ppjoke.navigator.FixFragmentNavigator
 
 fun NavController.build(
@@ -41,7 +42,7 @@ fun NavController.build(
                     addDeepLink(destination.pageUrl)
                     setComponentName(
                         ComponentName(
-                            ApplicationUtil.application.packageName,
+                            AppUtil.application.packageName,
                             destination.className
                         )
                     )

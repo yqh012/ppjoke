@@ -1,4 +1,4 @@
-package com.yqh.ppjoke.util
+package com.yqh.common.utils
 
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.JsonReader
